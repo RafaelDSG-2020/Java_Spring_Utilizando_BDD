@@ -1,5 +1,6 @@
 package cucumber.steps;
 
+import br.com.mandacaru.livecodebdd.LivecodebddApplication;
 import br.com.mandacaru.livecodebdd.controller.ProductController;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -31,6 +32,8 @@ public class StoreProdutcsSteps {
     }
     @Then("All product should be returned successfully")
     public void allProductShouldBeReturnedSuccessfully() {
+
+        //Arrange
         List<String> productToBeVerified = new ArrayList<>();
         productToBeVerified.add("Mouse");
         productToBeVerified.add("Keyboard");
@@ -38,6 +41,14 @@ public class StoreProdutcsSteps {
         productToBeVerified.add("Screen");
         productToBeVerified.add("Notebook");
         productToBeVerified.add("CellPhone");
+
+        //Act
+        ProductController products = new ProductController();
+
+        //Assert
+        assertTrue("All product should be returned successfully",
+                products.getAllProducts().
+                        containsAll(productToBeVerified));
     }
 
 
