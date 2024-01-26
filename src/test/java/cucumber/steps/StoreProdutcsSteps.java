@@ -27,7 +27,7 @@ public class StoreProdutcsSteps {
     @And("One of these products is a CellPhone")
     public void oneOfTheseProductsIsACellPhone() {
         ProductController products  = new ProductController();
-        assertTrue("ne of these products is a CellPhone",
+        assertTrue("one of these products is a CellPhone",
                 products.getAllProducts().contains("CellPhone"));
     }
     @Then("All product should be returned successfully")

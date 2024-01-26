@@ -12,10 +12,12 @@ import java.util.List;
 @RequestMapping("/api")
 public class ProductController {
 
+    List<String> products = new ArrayList<String>();
+
     @GetMapping("/products")
     public List<String> getAllProducts(){
 
-        List<String> products = new ArrayList<String>();
+
 
         products.add("Mouse");
         products.add("Keyboard");
@@ -25,5 +27,26 @@ public class ProductController {
         products.add("CellPhone");
 
         return  products;
+    }
+    public void addRegisteredProduct(String product){
+        products.add(product);
+    }
+    public boolean isProductRegistered(String product){
+        return products.contains(product);
+    }
+
+    public int getProductCount(){
+        return products.size();
+    }
+
+    public void deleteProduct(String product){
+        products.remove(product);
+    }
+
+    public void updateProduct(String oldProduct, String newProduct){
+        if(isProductRegistered(oldProduct)){
+            int index = products.indexOf(oldProduct);
+            products.set(index, newProduct);
+        }
     }
 }
